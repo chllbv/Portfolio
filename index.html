@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rochelle Margarett — Executive Assistant Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F1E8;
+    --bg-soft:#EFEAE0;
+    --ink:#1B1812;
+    --ink-soft:#5B5648;
+    --line:#DCD5C6;
+    --gold:#A9822F;
+    --gold-soft:#C9A15C;
+    --card-dark:#161310;
+    --card-dark-text:#F5F1E8;
+    --shadow:none;
+    --radius:2px;
+  }
+  html[data-theme="dark"]{
+    --bg:#141210;
+    --bg-soft:#1C1915;
+    --ink:#F2EEE4;
+    --ink-soft:#B8B0A0;
+    --line:#332E26;
+    --gold:#C9A15C;
+    --gold-soft:#E0BD82;
+    --card-dark:#0B0A08;
+    --card-dark-text:#F2EEE4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    transition:background .3s ease, color .3s ease;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+  .italic-serif{font-style:italic; font-weight:500;}
+  p{line-height:1.65; color:var(--ink-soft); margin:0;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  section{padding:120px 0;}
+  @media(max-width:768px){
+    section{padding:72px 0;}
+    .wrap{padding:0 24px;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:18px; letter-spacing:.02em;}
+  .brand span{color:var(--gold);}
+  nav.links{display:flex; gap:34px; align-items:center;}
+  nav.links a{
+    font-size:13px; letter-spacing:.03em; color:var(--ink-soft);
+    padding-bottom:4px; border-bottom:1px solid transparent;
+    transition:color .2s, border-color .2s;
+  }
+  nav.links a:hover, nav.links a.active{color:var(--ink); border-color:var(--gold);}
+  .nav-actions{display:flex; align-items:center; gap:14px;}
+  .theme-btn{
+    width:38px; height:38px; border-radius:50%;
+    border:1px solid var(--line); background:transparent; color:var(--ink);
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:border-color .2s, transform .2s;
+  }
+  .theme-btn:hover{border-color:var(--gold);}
+  .theme-btn svg{width:17px; height:17px;}
+  .cta-nav{
+    background:var(--ink); color:var(--bg); font-size:13px; padding:10px 20px;
+    border-radius:2px; white-space:nowrap; letter-spacing:.02em;
+  }
+  html[data-theme="dark"] .cta-nav{background:var(--gold); color:#141210;}
+  .burger{
+    display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;
+  }
+  .burger span{width:22px; height:2px; background:var(--ink); display:block;}
+
+  .mobile-menu{
+    position:fixed; top:0; left:0; right:0; bottom:0; background:var(--bg); z-index:1100;
+    display:flex; flex-direction:column; padding:24px;
+    transform:translateX(100%); transition:transform .35s ease;
+    visibility:hidden;
+  }
+  .mobile-menu.open{visibility:visible;}
+  .mobile-menu.open{transform:translateX(0);}
+  .mobile-menu-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:48px;}
+  .mobile-menu a{font-family:'Fraunces',serif; font-size:28px; padding:14px 0; border-bottom:1px solid var(--line); color:var(--ink);}
+  .close-btn{background:none;border:none;font-size:28px;color:var(--ink);cursor:pointer;}
+
+  @media(max-width:900px){
+    nav.links{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding-top:190px; padding-bottom:80px;}
+  .hero-grid{display:grid; grid-template-columns:1.3fr .9fr; gap:64px; align-items:center;}
+  .eyebrow{
+    font-size:12px; letter-spacing:.12em; color:var(--gold); font-weight:600; text-transform:uppercase;
+    margin-bottom:22px; display:block;
+  }
+  .hero h1{font-size:clamp(48px,7vw,86px); line-height:1.02; letter-spacing:-.01em;}
+  .hero .role{
+    margin-top:26px; color:var(--gold); font-size:14px; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+  }
+  .hero .tagline{margin-top:16px; font-size:19px; font-style:italic; font-family:'Fraunces',serif; color:var(--ink-soft); max-width:480px;}
+  .hero-photo{
+    aspect-ratio:4/5; background:var(--bg-soft); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-size:13px;
+    overflow:hidden; position:relative;
+  }
+  .hero-photo img{width:100%; height:100%; object-fit:cover;}
+  .ph-fallback{
+    display:none; align-items:center; justify-content:center; text-align:center;
+    width:100%; height:100%; color:var(--ink-soft); font-size:12.5px; line-height:1.6; padding:20px;
+  }
+  .ph-fallback b{color:var(--gold); font-weight:600;}
+  .hero-foot{
+    margin-top:64px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; gap:28px; font-size:12px; letter-spacing:.05em; color:var(--ink-soft); flex-wrap:wrap;
+  }
+  .hero-foot b{color:var(--ink); font-weight:600;}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero{padding-top:140px;}
+    .hero-photo{max-width:280px; margin:0 auto;}
+  }
+
+  /* ---------- SECTION HEADER ---------- */
+  .sec-label{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:18px; display:block;}
+  .sec-title{font-size:clamp(34px,4.5vw,52px); margin-bottom:20px;}
+  .sec-rule{width:64px; height:2px; background:var(--gold); margin-bottom:44px;}
+  .sec-sub{max-width:560px; font-size:16px; margin-bottom:20px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start;}
+  .about-block{margin-bottom:32px;}
+  .about-block h4{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; font-family:'Inter',sans-serif; font-weight:600;}
+  .about-block p{font-size:16px; color:var(--ink);}
+  .about-photo{aspect-ratio:4/3; background:var(--bg-soft); border:1px solid var(--line); margin-bottom:24px; overflow:hidden; position:relative;}
+  .about-photo img{width:100%; height:100%; object-fit:cover;}
+  .facts{background:var(--card-dark); color:var(--card-dark-text); padding:28px;}
+  .facts h4{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-soft); margin:0 0 18px; font-weight:600;}
+  .fact-row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.1); font-size:14px;}
+  .fact-row:last-child{border-bottom:none;}
+  .fact-row span:first-child{color:#a39c8c;}
+  .fact-row span:last-child{color:var(--gold-soft); font-style:italic; text-align:right;}
+
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .service-card{background:var(--bg); padding:38px 32px;}
+  .service-num{font-family:'Fraunces',serif; font-style:italic; color:var(--gold); font-size:22px; margin-bottom:16px; display:block;}
+  .service-card h3{font-size:19px; margin-bottom:12px;}
+  .service-card p{font-size:14.5px;}
+  @media(max-width:900px){.services-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.services-grid{grid-template-columns:1fr;}}
+
+  /* ---------- TOOLS ---------- */
+  .tools-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:16px;}
+  .tool-badge{
+    aspect-ratio:1; border:1px dashed var(--line); display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:10px; padding:12px; text-align:center;
+  }
+  .tool-mono{
+    width:44px; height:44px; border-radius:50%; background:var(--card-dark); color:var(--gold-soft);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:600; font-size:15px;
+  }
+  .tool-mono img{width:22px; height:22px; object-fit:contain;}
+  .tool-badge span{font-size:12px; color:var(--ink-soft);}
+  @media(max-width:900px){.tools-grid{grid-template-columns:repeat(4,1fr);}}
+  @media(max-width:560px){.tools-grid{grid-template-columns:repeat(3,1fr); gap:10px;}}
+
+  /* ---------- PROCESS ---------- */
+  .process-track{display:grid; grid-template-columns:repeat(4,1fr); gap:36px; position:relative;}
+  .process-track::before{
+    content:""; position:absolute; top:26px; left:6%; right:6%; height:1px; background:var(--line);
+  }
+  .proc-num{
+    width:52px; height:52px; border-radius:50%; background:var(--card-dark); color:var(--card-dark-text);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-style:italic;
+    font-size:18px; margin-bottom:22px; position:relative; z-index:2;
+  }
+  .proc-item h3{font-size:19px; margin-bottom:12px;}
+  .proc-item p{font-size:14px;}
+  @media(max-width:900px){.process-track{grid-template-columns:1fr 1fr; row-gap:44px;} .process-track::before{display:none;}}
+  @media(max-width:560px){.process-track{grid-template-columns:1fr;}}
+
+  /* ---------- CASE STUDY ---------- */
+  .case-card{border:1px solid var(--line); padding:48px;}
+  .case-top{display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:28px; padding-bottom:28px; border-bottom:1px solid var(--line);}
+  .case-tag{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:600;}
+  .case-headline{font-size:clamp(24px,3vw,32px); font-style:italic; max-width:640px; margin-top:12px;}
+  .case-meta{display:flex; gap:40px; flex-wrap:wrap;}
+  .case-meta div{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);}
+  .case-meta b{display:block; font-family:'Fraunces',serif; font-style:italic; font-size:15px; color:var(--ink); text-transform:none; letter-spacing:0; margin-top:4px;}
+  .case-body{display:grid; grid-template-columns:repeat(3,1fr); gap:36px;}
+  .case-body h4{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; font-weight:600;}
+  .case-body p{font-size:14.5px;}
+  .case-quote{
+    margin-top:32px; padding:24px 28px; background:var(--bg-soft); border-left:2px solid var(--gold);
+    font-style:italic; font-family:'Fraunces',serif; font-size:16px; color:var(--ink);
+  }
+  .case-quote cite{display:block; margin-top:12px; font-style:normal; font-family:'Inter',sans-serif; font-size:12.5px; color:var(--ink-soft); font-weight:600;}
+  @media(max-width:800px){.case-body{grid-template-columns:1fr;} .case-card{padding:28px;}}
+
+  /* ---------- PROJECTS (mini) ---------- */
+  .projects-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:8px;}
+  .project-card{background:var(--bg); padding:40px;}
+  .project-shot{
+    aspect-ratio:16/10; background:var(--bg-soft); border:1px solid var(--line); margin-bottom:24px;
+    display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-size:12px; overflow:hidden;
+    position:relative;
+  }
+  .project-shot img{width:100%; height:100%; object-fit:cover;}
+  .project-card h3{font-size:22px; font-style:italic; margin-bottom:16px;}
+  .project-card h5{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin:20px 0 10px; font-weight:600;}
+  .project-card p{font-size:14px;}
+  .tag-list{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  .tag-list span{font-size:11.5px; border:1px solid var(--line); padding:5px 12px; color:var(--ink-soft);}
+  @media(max-width:800px){.projects-grid{grid-template-columns:1fr;}}
+
+  /* ---------- RESULTS ---------- */
+  .results-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:44px 36px;}
+  .result-num{font-family:'Fraunces',serif; font-style:italic; font-weight:600; font-size:52px; color:var(--gold); line-height:1;}
+  .result-rule{width:32px; height:2px; background:var(--ink); margin:14px 0;}
+  .result-label{font-size:13px; letter-spacing:.06em; text-transform:uppercase; font-weight:700; color:var(--ink); margin-bottom:6px;}
+  .result-ctx{font-size:13px; font-style:italic; color:var(--ink-soft);}
+  @media(max-width:700px){.results-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.results-grid{grid-template-columns:1fr;}}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .testi-card{border:1px solid var(--line); padding:32px; display:flex; flex-direction:column; height:100%;}
+  .testi-mark{font-family:'Fraunces',serif; font-size:44px; color:var(--gold-soft); line-height:1; margin-bottom:16px;}
+  .testi-card p{font-style:italic; font-family:'Fraunces',serif; font-size:17px; color:var(--ink); flex-grow:1;}
+  .testi-person{display:flex; align-items:center; gap:12px; margin-top:24px; padding-top:20px; border-top:1px solid var(--line);}
+  .testi-avatar{width:42px; height:42px; border-radius:50%; background:var(--bg-soft); border:1px dashed var(--line); flex-shrink:0;}
+  .testi-person b{display:block; font-size:14px;}
+  .testi-person span{font-size:12.5px; color:var(--ink-soft); font-style:italic;}
+  @media(max-width:800px){.testi-grid{grid-template-columns:1fr;}}
+
+  /* ---------- PACKAGES ---------- */
+  .pkg-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch;}
+  .pkg-card{border:1px solid var(--line); padding:36px; display:flex; flex-direction:column;}
+  .pkg-card.featured{background:var(--card-dark); color:var(--card-dark-text); border-color:var(--card-dark); position:relative;}
+  .pkg-badge{
+    position:absolute; top:-13px; left:36px; background:var(--gold); color:#141210; font-size:11px;
+    letter-spacing:.08em; text-transform:uppercase; padding:5px 14px; font-weight:700;
+  }
+  .pkg-tier{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px;}
+  .pkg-card.featured .pkg-tier{color:var(--gold-soft);}
+  .pkg-price-label{font-size:12px; font-style:italic; color:var(--ink-soft); margin-bottom:6px;}
+  .pkg-card.featured .pkg-price-label{color:#a39c8c;}
+  .pkg-price{font-family:'Fraunces',serif; font-style:italic; font-size:44px; margin-bottom:4px;}
+  .pkg-price span{font-size:14px; font-style:normal; color:var(--ink-soft); font-family:'Inter',sans-serif;}
+  .pkg-card.featured .pkg-price span{color:#a39c8c;}
+  .pkg-best{font-size:13px; font-style:italic; color:var(--ink-soft); margin:16px 0 24px; padding-bottom:24px; border-bottom:1px solid var(--line);}
+  .pkg-card.featured .pkg-best{color:#c7c0b0; border-color:rgba(255,255,255,.12);}
+  .pkg-includes-label{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:14px;}
+  .pkg-card.featured .pkg-includes-label{color:var(--gold-soft);}
+  .pkg-list{list-style:none; margin:0; padding:0; flex-grow:1;}
+  .pkg-list li{font-size:14px; padding:9px 0 9px 20px; position:relative; color:var(--ink);}
+  .pkg-card.featured .pkg-list li{color:#ece7db;}
+  .pkg-list li::before{content:"→"; position:absolute; left:0; color:var(--gold);}
+
+  @media(max-width:900px){.pkg-grid{grid-template-columns:1fr;}}
+
+  /* ---------- WHY ME ---------- */
+  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px 56px;}
+  .why-item h3{font-size:19px; margin-bottom:12px;}
+  .why-item p{font-size:14.5px;}
+  .why-rule{width:28px; height:2px; background:var(--gold); margin-bottom:14px;}
+  @media(max-width:700px){.why-grid{grid-template-columns:1fr;}}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:start;}
+  .contact-cta{
+    display:inline-flex; align-items:center; gap:10px; background:var(--card-dark); color:var(--card-dark-text);
+    padding:20px 30px; font-size:14px; letter-spacing:.04em; margin-top:8px;
+    transition:transform .2s ease;
+  }
+  .contact-cta:hover{transform:translateY(-2px);}
+  .contact-list{border-top:1px solid var(--line);}
+  .contact-row{
+    display:flex; justify-content:space-between; align-items:center; padding:18px 0; border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .contact-row span:first-child{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:700;}
+  .contact-row a{font-style:italic; font-family:'Fraunces',serif; font-size:15px; transition:color .2s;}
+  .contact-row a:hover{color:var(--gold);}
+  .hours-note{margin-top:24px; font-size:13px; font-style:italic; color:var(--ink-soft);}
+
+  footer{border-top:1px solid var(--line); padding:32px 0; text-align:center;}
+  footer p{font-size:12px; letter-spacing:.05em;}
+
+  @media(max-width:800px){.contact-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">Rochelle<span>.</span></div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#results">Results</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#contact" class="cta-nav">Let's talk</a>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <div class="brand">Rochelle<span>.</span></div>
+    <button class="close-btn" id="closeMenu">&times;</button>
+  </div>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#tools">Tools</a>
+  <a href="#work">Work</a>
+  <a href="#results">Results</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#why">Why Me</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Portfolio · 2026</span>
+      <h1>Rochelle<br>Margarett.</h1>
+      <div class="role">Executive Assistant | Administrative Support</div>
+      <p class="tagline">Helping busy professionals and business owners stay organized, on schedule, and focused on what matters most.</p>
+      <div class="hero-foot">
+        <div>Based in<br><b>Bulacan, Philippines</b></div>
+        <div>Time zone<br><b>GMT+8 (PHT)</b></div>
+        <div>Available<br><b>Up to 40 hrs/week</b></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="photo-hero.jpg" alt="Rochelle Margarett" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="ph-fallback">Save your photo as<br><b>photo-hero.jpg</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <span class="sec-label">About Me</span>
+    <h2 class="sec-title italic-serif">Who I am.</h2>
+    <div class="sec-rule"></div>
+    <div class="about-grid">
+      <div>
+        <div class="about-block">
+          <h4>The Hook</h4>
+          <p>I am an Executive Assistant who keeps schedules, tasks, and day-to-day operations on track so busy professionals can focus on priorities, decisions, and growth.</p>
+        </div>
+        <div class="about-block">
+          <h4>The Story</h4>
+          <p>My experience in administrative work, data management, documentation, and digital coordination has taught me to work with accuracy, organization, and attention to detail. I bring these skills into executive support to keep tasks organized, information accessible, and day-to-day work on track.</p>
+        </div>
+        <div class="about-block">
+          <h4>The Promise</h4>
+          <p>When you work with me, you get reliable support, organized workflows, and timely follow-through so you can stay focused on your priorities.</p>
+        </div>
+      </div>
+      <div>
+        <div class="about-photo">
+          <img src="photo-about.jpg" alt="Workspace" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback">Save your photo as<br><b>photo-about.jpg</b></div>
+        </div>
+        <div class="facts">
+          <h4>Quick Facts</h4>
+          <div class="fact-row"><span>Years of experience</span><span>1+ Year in Admin & Operations</span></div>
+          <div class="fact-row"><span>English proficiency</span><span>Professional Working Proficiency</span></div>
+          <div class="fact-row"><span>Languages</span><span>English, Filipino</span></div>
+          <div class="fact-row"><span>Work style</span><span>Async / Real-time / Hybrid</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <span class="sec-label">Services</span>
+    <h2 class="sec-title italic-serif">What I deliver.</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="wrap">
+    <div class="services-grid">
+      <div class="service-card"><span class="service-num">01</span><h3>Calendar Management</h3><p>Keep schedules, meetings, and appointments organized so priorities stay on track.</p></div>
+      <div class="service-card"><span class="service-num">02</span><h3>Inbox & Email Support</h3><p>Keep important messages organized, prioritized, and ready for timely follow-up.</p></div>
+      <div class="service-card"><span class="service-num">03</span><h3>Meeting Support</h3><p>Prepare agendas, organize notes, and track follow-ups so meetings end with clear direction.</p></div>
+      <div class="service-card"><span class="service-num">04</span><h3>Project & Task Coordination</h3><p>Track priorities, deadlines, and follow-ups so projects stay organized and on schedule.</p></div>
+      <div class="service-card"><span class="service-num">05</span><h3>Social Media Management</h3><p>Schedule content, manage inboxes, and respond to comments and inquiries so your online presence stays active and engaged.</p></div>
+      <div class="service-card"><span class="service-num">06</span><h3>Stakeholder Communication</h3><p>Keep communication clear and timely so requests, updates, and priorities stay aligned.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="wrap">
+    <span class="sec-label">Tools</span>
+    <h2 class="sec-title italic-serif">Tools I work in.</h2>
+    <div class="sec-rule"></div>
+    <p class="sec-sub">The tools I use to manage tasks, communication, scheduling, and daily workflows.</p>
+    <div class="tools-grid" style="margin-top:36px;">
+      <div class="tool-badge"><div class="tool-mono"><img src="https://cdn.simpleicons.org/google/F5F1E8" alt="Google Workspace"></div><span>Google Workspace</span></div>
+      <div class="tool-badge"><div class="tool-mono">M365</div><span>Microsoft 365</span></div>
+      <div class="tool-badge"><div class="tool-mono">Sl</div><span>Slack</span></div>
+      <div class="tool-badge"><div class="tool-mono"><img src="https://cdn.simpleicons.org/calendly/F5F1E8" alt="Calendly"></div><span>Calendly</span></div>
+      <div class="tool-badge"><div class="tool-mono"><img src="https://cdn.simpleicons.org/zoom/F5F1E8" alt="Zoom"></div><span>Zoom</span></div>
+      <div class="tool-badge"><div class="tool-mono"><img src="https://cdn.simpleicons.org/notion/F5F1E8" alt="Notion"></div><span>Notion</span></div>
+      <div class="tool-badge"><div class="tool-mono">Cv</div><span>Canva</span></div>
+      <div class="tool-badge"><div class="tool-mono"><img src="https://cdn.simpleicons.org/asana/F5F1E8" alt="Asana"></div><span>Asana</span></div>
+      <div class="tool-badge"><div class="tool-mono"><img src="https://cdn.simpleicons.org/meta/F5F1E8" alt="Meta Business Suite"></div><span>Meta Business Suite</span></div>
+      <div class="tool-badge"><div class="tool-mono"><img src="https://cdn.simpleicons.org/zapier/F5F1E8" alt="Zapier"></div><span>Zapier</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="background:var(--bg-soft);">
+  <div class="wrap">
+    <span class="sec-label">Process</span>
+    <h2 class="sec-title italic-serif">How we'll work.</h2>
+    <div class="sec-rule"></div>
+    <div class="process-track" style="margin-top:24px;">
+      <div class="proc-item"><div class="proc-num">01</div><h3>Discovery</h3><p>A quick 30-minute conversation to understand your goals, current workflow, and the tasks taking up most of your time.</p></div>
+      <div class="proc-item"><div class="proc-num">02</div><h3>Setup</h3><p>I organize your calendar, inbox, and task management system, and set up the tools we'll use together.</p></div>
+      <div class="proc-item"><div class="proc-num">03</div><h3>Execution</h3><p>Day-to-day support — calendar, inbox, meeting prep, social media scheduling, and recurring tasks.</p></div>
+      <div class="proc-item"><div class="proc-num">04</div><h3>Reporting</h3><p>Every week, I send a short recap of what got done, what's next, and anything that needs your decision.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section id="work">
+  <div class="wrap">
+    <span class="sec-label">Case Study</span>
+    <h2 class="sec-title italic-serif">Proof of work.</h2>
+    <div class="sec-rule"></div>
+    <div class="case-card">
+      <div class="case-top">
+        <div>
+          <span class="case-tag">Case Study · 01</span>
+          <div class="case-headline">How I delivered conflict-free interview scheduling for a full recruitment cycle.</div>
+        </div>
+        <div class="case-meta">
+          <div>Client<b>Executive Board</b></div>
+          <div>Duration<b>1 week</b></div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div><h4>Problem</h4><p>With 8 board members and 15+ applicants needing to align schedules for interviews, coordinating everyone's availability manually risked double-bookings and conflicts within a tight one-week window.</p></div>
+        <div><h4>Solution</h4><p>I managed the full interview scheduling process, collecting availability from all 8 board members, setting up a Calendly system connected to Google Calendar, and giving applicants a 3-day window to confirm their slot.</p></div>
+        <div><h4>Result</h4><p>Zero scheduling conflicts across 15+ applicant interviews. All interviews completed within the one-week window, with no manual back-and-forth needed.</p></div>
+      </div>
+      <div class="case-quote">
+        "Everything went smoothly, no scheduling conflicts at all. Thank you for handling this so well."
+        <cite>— Virla, Director of Media</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section style="background:var(--bg-soft);">
+  <div class="wrap">
+    <span class="sec-label">Additional Work</span>
+    <h2 class="sec-title italic-serif">Systems in practice.</h2>
+    <div class="sec-rule"></div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-shot">
+          <img src="screenshot-calendar.png" alt="Calendar Management" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback">Save your screenshot as<br><b>screenshot-calendar.png</b></div>
+        </div>
+        <h3>Calendar Management</h3>
+        <h5>What I Built</h5>
+        <p>A structured calendar system built to solve a common problem for busy professionals: double bookings, missed sessions, and no time left for actual work. Client sessions, meetings, admin work, and personal time stay clearly separated.</p>
+        <h5>What This Demonstrates</h5>
+        <div class="tag-list">
+          <span>Calendar Organization</span><span>Appointment & Task Scheduling</span><span>Time Blocking</span><span>Priority Management</span><span>Schedule Visibility</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-shot">
+          <img src="screenshot-inbox.png" alt="Inbox Management" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback">Save your screenshot as<br><b>screenshot-inbox.png</b></div>
+        </div>
+        <h3>Inbox Management</h3>
+        <h5>What I Built</h5>
+        <p>A structured inbox management system built to stop important messages from getting buried under everyday noise. Every incoming email is categorized by type and priority.</p>
+        <h5>What This Demonstrates</h5>
+        <div class="tag-list">
+          <span>Email Organization</span><span>Label & Category Management</span><span>Communication Tracking</span><span>Inbox Visibility</span><span>Follow-Up Management</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="wrap">
+    <span class="sec-label">Results</span>
+    <h2 class="sec-title italic-serif">By the numbers.</h2>
+    <div class="sec-rule"></div>
+    <div class="results-grid">
+      <div><div class="result-num">100+</div><div class="result-rule"></div><div class="result-label">Posts Published</div><div class="result-ctx">Continuous social media management, 1 year</div></div>
+      <div><div class="result-num">25+</div><div class="result-rule"></div><div class="result-label">Projects & Events Supported</div><div class="result-ctx">Additional support and volunteer work</div></div>
+      <div><div class="result-num">15+</div><div class="result-rule"></div><div class="result-label">Applicants Scheduled</div><div class="result-ctx">Zero conflicts, full recruitment cycle</div></div>
+      <div><div class="result-num">0</div><div class="result-rule"></div><div class="result-label">Scheduling Conflicts</div><div class="result-ctx">Across 8 board members and 15+ applicants</div></div>
+      <div><div class="result-num">1yr+</div><div class="result-rule"></div><div class="result-label">Admin & Operations Experience</div><div class="result-ctx">Digital Manager and administrative support roles</div></div>
+      <div><div class="result-num">0</div><div class="result-rule"></div><div class="result-label">Missed Messages or Inquiries</div><div class="result-ctx">Systematic email and social media organization</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <span class="sec-label">Testimonials</span>
+    <h2 class="sec-title italic-serif">In their words.</h2>
+    <div class="sec-rule"></div>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-mark">"</div><p>Everything's been more organized since Rochelle took over.</p>
+        <div class="testi-person"><div class="testi-avatar"></div><div><b>Ichiro Takayashi</b><span>Director of Creatives</span></div></div>
+      </div>
+      <div class="testi-card"><div class="testi-mark">"</div><p>We never miss a deadline or a meeting anymore.</p>
+        <div class="testi-person"><div class="testi-avatar"></div><div><b>Virla Getalado</b><span>Director of Media</span></div></div>
+      </div>
+      <div class="testi-card"><div class="testi-mark">"</div><p>Dependable and detail-oriented — always accurate with filing and data encoding, and handled every task and inquiry with professionalism.</p>
+        <div class="testi-person"><div class="testi-avatar"></div><div><b>Laila Valerio</b><span>Branch Operations Officer</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="pricing">
+  <div class="wrap">
+    <span class="sec-label">Packages</span>
+    <h2 class="sec-title italic-serif">Three ways to work together.</h2>
+    <div class="sec-rule"></div>
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-tier">Starter</div>
+        <div class="pkg-price-label">Starting from</div>
+        <div class="pkg-price">$330<span> / month</span></div>
+        <div class="pkg-best">Best for short engagements, trials, smaller teams.</div>
+        <div class="pkg-includes-label">Includes</div>
+        <ul class="pkg-list">
+          <li>Calendar management and appointment scheduling</li>
+          <li>Email and inbox management</li>
+          <li>Basic document preparation and filing</li>
+          <li>Weekly progress recap</li>
+        </ul>
+      </div>
+      <div class="pkg-card featured">
+        <div class="pkg-badge">Most Popular</div>
+        <div class="pkg-tier">Professional</div>
+        <div class="pkg-price-label">Starting from</div>
+        <div class="pkg-price">$650<span> / month</span></div>
+        <div class="pkg-best">Best for most clients — the full ongoing relationship.</div>
+        <div class="pkg-includes-label">Everything in Starter, plus</div>
+        <ul class="pkg-list">
+          <li>Meeting coordination — agendas, minutes, action items</li>
+          <li>Social media scheduling and inbox/comment management</li>
+          <li>Task and project tracking</li>
+          <li>Client and stakeholder communication support</li>
+        </ul>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-tier">Premium</div>
+        <div class="pkg-price-label">Starting from</div>
+        <div class="pkg-price">$1,200<span> / month</span></div>
+        <div class="pkg-best">Best for complex needs, priority support, white-glove.</div>
+        <div class="pkg-includes-label">Everything in Professional, plus</div>
+        <ul class="pkg-list">
+          <li>Multi-stakeholder scheduling and coordination</li>
+          <li>SOP creation and documentation</li>
+          <li>Cross-department liaison and follow-up</li>
+          <li>Confidential records and document management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section id="why" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <span class="sec-label">Why Me</span>
+    <h2 class="sec-title italic-serif">Why work with me.</h2>
+    <div class="sec-rule"></div>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-rule"></div><h3>Time Zone Advantage</h3><p>My working hours align closely with UK and Australian business hours, requiring minimal schedule adjustment. This allows for real-time collaboration rather than relying on async replies the next day.</p></div>
+      <div class="why-item"><div class="why-rule"></div><h3>Strong Written Communication</h3><p>Clear, professional English, especially in writing. Every email, message, and document I produce is built to be easy to read and act on.</p></div>
+      <div class="why-item"><div class="why-rule"></div><h3>Built for Structure and Precision</h3><p>My background is in Mathematics with a specialization in Computer Science — systematic, detail-driven, and process-oriented, carried into administrative and executive support work.</p></div>
+      <div class="why-item"><div class="why-rule"></div><h3>Smart Hiring, Not Cheap Labor</h3><p>My rate reflects real capability: systems thinking, precision, and reliability, not just hours worked. You're investing in someone who gets things right the first time.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <span class="sec-label">Contact</span>
+    <h2 class="sec-title italic-serif">Let's talk.</h2>
+    <div class="sec-rule"></div>
+    <div class="contact-grid">
+      <div>
+        <p style="font-size:16px; color:var(--ink); max-width:440px;">Booking the 30-minute discovery call is the next step. Tell me what you're working on, and I'll show you how I can help.</p>
+        <a href="https://calendly.com/rochelle-abueva-va/30min" target="_blank" rel="noopener" class="contact-cta" id="discoveryCallBtn">Book a discovery call →</a>
+      </div>
+      <div>
+        <div class="contact-list">
+          <div class="contact-row"><span>Email</span><a href="mailto:rochelle.abueva.va@gmail.com">rochelle.abueva.va@gmail.com</a></div>
+          <div class="contact-row"><span>LinkedIn</span><a href="https://linkedin.com/in/rochellemargarettabueva" target="_blank" rel="noopener">linkedin.com/in/rochellemargarettabueva</a></div>
+          <div class="contact-row"><span>WhatsApp</span><a href="https://wa.me/639608350735" target="_blank" rel="noopener">+63 960 835 0735</a></div>
+          <div class="contact-row"><span>Telegram</span><a href="https://t.me/chellerosheru" target="_blank" rel="noopener">@chellerosheru</a></div>
+        </div>
+        <p class="hours-note">Working hours: Mon–Fri, 10am–3pm PHT (UTC+8) · Replies within 4 business hours</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Rochelle Margarett Abueva — Personal Portfolio</p>
+</footer>
+
+<script>
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const iconMoon = document.getElementById('iconMoon');
+  const root = document.documentElement;
+  function setTheme(t){
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('portfolio-theme', t);
+    iconMoon.innerHTML = t === 'dark'
+      ? '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>'
+      : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  }
+  const saved = localStorage.getItem('portfolio-theme') || 'light';
+  setTheme(saved);
+  themeToggle.addEventListener('click', () => {
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // Mobile menu
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  burgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav.links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 140) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+
+</body>
+</html>
